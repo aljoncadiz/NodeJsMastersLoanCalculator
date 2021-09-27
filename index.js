@@ -35,7 +35,13 @@ class Bank {
         const rate = this.interestRate / 100;
         const grossInterestRate = (this.loanAmount * rate) * loanTerm;
         const totalLoanAmount = this.loanAmount + grossInterestRate;
-        console.log('\n\nInstallment: ', totalLoanAmount / loanTerm);
+        console.log('Interest Rate:  ', rate);
+        console.log('\nTotal Interest Amount: ', grossInterestRate);
+        console.log('Total Loan Amount: ', this.loanAmount + grossInterestRate);
+        console.log(`\n\nInstallment ${parseInt(loanTerm)} ${parseInt(loanTerm) > 1 ? 'months': 'month'}:`, totalLoanAmount / loanTerm);
+        if (loanTerm % 2) {
+            console.log(`Last month Installment ( ${30*(loanTerm % 1)} days )`, totalLoanAmount - ((totalLoanAmount / loanTerm) * parseInt(loanTerm)));
+        }
         console.log('\n\n');
     }
 }
@@ -93,9 +99,9 @@ class LoanCalculator {
 const calculator = new LoanCalculator(argv.bankName, argv.loanAmount, argv.loanTerm);
 
 
-console.log("\n\nBank Name:   ", calculator.bankName.toUpperCase());
-console.log("Loan Amount: ", calculator.loanAmount);
-console.log("Loan Term:   ", calculator.loanTerm);
+console.log("\n\nBank Name:      ", calculator.bankName.toUpperCase());
+console.log("Loan Amount:    ", calculator.loanAmount);
+console.log("Loan Term:      ", calculator.loanTerm);
 
 
 calculator.getMonthlyInstallment();
