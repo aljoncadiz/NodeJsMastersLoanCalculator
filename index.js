@@ -40,7 +40,7 @@ class Bank {
         console.log('Total Loan Amount: ', this.loanAmount + grossInterestRate);
         console.log(`\n\nInstallment ${parseInt(loanTerm)} ${parseInt(loanTerm) > 1 ? 'months': 'month'}:`, totalLoanAmount / loanTerm);
         if (loanTerm % 2) {
-            console.log(`Last month Installment ( ${30*(loanTerm % 1)} days )`, totalLoanAmount - ((totalLoanAmount / loanTerm) * parseInt(loanTerm)));
+            console.log(`Last month Installment ( ${parseInt(30*(loanTerm % 1))} days )`, totalLoanAmount - ((totalLoanAmount / loanTerm) * parseInt(loanTerm)));
         }
         console.log('\n\n');
     }
