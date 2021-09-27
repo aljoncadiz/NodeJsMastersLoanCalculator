@@ -66,8 +66,11 @@ class LoanCalculator {
         if(isNaN(loanAmount) || isNaN(loanTerm)) {
             throw Error('loanAmount and loanTerm value must be a number');
         }
-        if(loanAmount <= 0 || loanTerm <= 0) {
-            throw Error('loanAmount and loanTerm value must be greater than 0');
+        if(loanAmount <= 0) {
+            throw Error('loanAmount value must be greater than 0');
+        }
+        if(loanTerm < 1) {
+            throw Error('loanTerm value must be greater or equal to 1');
         }
 
         this.bankName = bankName;
